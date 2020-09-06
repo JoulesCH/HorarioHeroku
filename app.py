@@ -9,6 +9,7 @@ external_stylesheets = ['https://codepen.io/amyoshino/pen/jzXypZ.css']
 
 df  = pd.read_csv('Cleande_df.csv')
 app = dash.Dash(__name__, external_stylesheets = external_stylesheets)
+server = app.server
 first = [{'label': '-','value':'all'}]
 group_dict = [{'label': group,'value':group} for group in df['Grupo'].unique()]
 group_dict = first + group_dict
