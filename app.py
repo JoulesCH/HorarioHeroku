@@ -191,10 +191,12 @@ def set_2dict(carrera):
 @app.callback(Output('Materia_y_grupo','options'),[Input('Carrera_3','value')])
 def set_3dict(carrera):
     group_dict = []
+    df2 = df[df['Programa'] == carrera]
+    df3 = df2.reset_index()
     first = [{'label': '-','value':'all'}]
-    for ind in range(df.shape[0]):
-        grupo = df.loc[ind,'Grupo']
-        materia = df.loc[ind,'Unidad de aprendizaje']
+    for ind in range(df3.shape[0]):
+        grupo = df3.loc[ind,'Grupo']
+        materia = df3.loc[ind,'Unidad de aprendizaje']
         group_dict.append( {'label': materia +' '+ grupo,'value':materia+'*'+grupo})
     group_dict = first + group_dict
     return group_dict
