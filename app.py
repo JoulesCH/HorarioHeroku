@@ -21,15 +21,15 @@ colors = {
 }
 
 style_subtitles= {
-    'margin-left':20
+    'margin-left':30
 
 }
 style_bar = {  
     'border-top-style': 'double',
     'border-top-color': '#79003E',#'#1866B9',
-    'width': 300,
-    'margin-left': 20,
-    'margin-right': 'auto'
+    'width': 'auto',
+    'margin-left': 30,
+    'margin-right': 20
 }
 app.layout = html.Div( children = [
     html.Header(
@@ -39,43 +39,51 @@ app.layout = html.Div( children = [
             'color': '#FFFFFF',#colors['text'],
             'margin-top':0,
             'margin-bottom':0,
-            'margin-left':0,
-            'margin-right':0,
-            'text-align':'center'
+            'margin-left':'auto',
+            'margin-right':'auto',
+            'text-align':'center',
+            'margin-left':30
+            #'width':730
         }
     ),
     html.H3(children = 'Filtrar por grupo', style = style_subtitles),
     html.Div('', style = style_bar),
-    html.Div(
-        children = dcc.Dropdown(id = 'Carrera', options = [{'label':'Ingeniería Matemática',
-                                                            'value':'LIM'},
-                                                            {'label':'Física y Matemáticas',
-                                                            'value':'LFM'}
-                                                            ],
-                                                value = 'LIM',
-                                                searchable = False,
-                                                clearable = False),
-        style = {
-            'margin':40,
-            'width': 250,
-            'margin-bottom':10,
-            'margin-top': 20
-        }
+    html.Div(children = [
+        html.Div(
+            children = dcc.Dropdown(id = 'Carrera', options = [{'label':'Ingeniería Matemática',
+                                                                'value':'LIM'},
+                                                                {'label':'Física y Matemáticas',
+                                                                'value':'LFM'}
+                                                                ],
+                                                    value = 'LIM',
+                                                    searchable = False,
+                                                    clearable = False),
+            style = {
+                'margin':40,
+                'width': 250,
+                'margin-bottom':10,
+                'margin-top': 20,
+                'margin-right':10
+                
+            },
+            className = 'six columns'
+        
+        ),
+        html.Div(
+            children = dcc.Dropdown(id = 'Semestre', #options = group_dict,
+                                                    value = '1MV2',
+                                                    searchable = False,
+                                                    clearable = False),
+            style = {
+                'margin':40,
+                'width': 150,
+                'margin-top':20,
+                'margin-bottom':20,
+                'margin-left':0
+            },
+            className = 'six columns'
     
-    ),
-    html.Div(
-        children = dcc.Dropdown(id = 'Semestre', #options = group_dict,
-                                                value = '1MV2',
-                                                searchable = False,
-                                                clearable = False),
-        style = {
-            'margin':40,
-            'width': 250,
-            'margin-top':0,
-            'margin-bottom':20
-        }
-    
-    ),
+    )],className = 'row'),
 
     html.Table(id = 'First_table',style = {
                                             'textAlign': 'center',
@@ -84,12 +92,14 @@ app.layout = html.Div( children = [
                                             'margin-left':'auto',
                                             'margin-right':'auto',
                                             'margin-bottom':40,
-                                            'width': 'auto',
+                                            'width': 250,
                                             'height':'auto'
                                            }
     ),
+   
     html.H3(children = 'Filtrar por materia', style = style_subtitles),
     html.Div('', style = style_bar),
+    html.Div(children=[
     html.Div(
         children = dcc.Dropdown(id = 'Carrera_2', options = [{'label':'Ingeniería Matemática',
                                                             'value':'LIM'},
@@ -103,8 +113,10 @@ app.layout = html.Div( children = [
             'margin':40,
             'width': 250,
             'margin-bottom':10,
-            'margin-top': 20
-        }
+            'margin-top': 20,
+            'margin-right':10
+        },
+        className = 'six columns'
     
     ),
     html.Div(
@@ -115,11 +127,14 @@ app.layout = html.Div( children = [
         style = {
             'margin':40,
             'width': 450,
-            'margin-top':0,
-            'margin-bottom':20
-        }
+            'margin-top':20,
+            'margin-bottom':20,
+            'margin-left':0
+        },
+        className = 'six columns'
     
-    ),
+    )
+    ], className = 'row'),
 
     html.Table(id = 'second_table',style = {
                                             'textAlign': 'center',
@@ -128,44 +143,50 @@ app.layout = html.Div( children = [
                                             'margin-left':'auto',
                                             'margin-right':'auto',
                                             'margin-bottom':40,
-                                            'width': 'auto',
+                                            'width':  250,
                                             'height':'auto'
                                            }
     ),
     
-    html.H3(children = 'Organiza tu horario', style = style_subtitles),
+    html.H3(children = 'Organizar horario', style = style_subtitles),
     html.Div('', style = style_bar),
-    html.Div(
-        children = dcc.Dropdown(id = 'Carrera_3', options = [{'label':'Ingeniería Matemática',
-                                                            'value':'LIM'},
-                                                            {'label':'Física y Matemáticas',
-                                                            'value':'LFM'}
-                                                            ],
-                                                value = 'LIM',
-                                                searchable = False,
-                                                clearable = False),
-        style = {
-            'margin':40,
-            'width': 250,
-            'margin-bottom':10,
-            'margin-top': 20
-        }
-    
-    ),
-    html.Div(
-        children = dcc.Dropdown(id = 'Materia_y_grupo', #options = group_dict,
-                                                value = ['1MV2','0'],
-                                                #searchable = False,
-                                                multi=True,
-                                                clearable = True),
-        style = {
-            'margin':40,
-            'width': 'auto',
-            'margin-top':0,
-            'margin-bottom':20
-        }
-    
-    ),
+    html.Div(children = [
+        html.Div(
+            children = dcc.Dropdown(id = 'Carrera_3', options = [{'label':'Ingeniería Matemática',
+                                                                'value':'LIM'},
+                                                                {'label':'Física y Matemáticas',
+                                                                'value':'LFM'}
+                                                                ],
+                                                    value = 'LIM',
+                                                    searchable = False,
+                                                    clearable = False),
+            style = {
+                'margin':40,
+                'width': 250,
+                'margin-bottom':10,
+                'margin-top': 20,
+                'margin-right':10
+            },
+            className = 'two columns'
+        
+        ),
+        html.Div(
+            children = dcc.Dropdown(id = 'Materia_y_grupo', #options = group_dict,
+                                                    value = ['1MV2','0'],
+                                                    #searchable = False,
+                                                    multi=True,
+                                                    clearable = True),
+            style = {
+                'margin':40,
+                'width': 900,
+                'margin-top':20,
+                'margin-bottom':20,
+                'margin-left':0,
+            },
+            className = 'two columns'
+        
+        )
+    ], className = 'row'),
 
     html.Table(id = 'third_table',style = {
                                             'textAlign': 'center',
@@ -174,7 +195,7 @@ app.layout = html.Div( children = [
                                             'margin-left':'auto',
                                             'margin-right':'auto',
                                             'margin-bottom':40,
-                                            'width': 'auto',
+                                            'width':  250,
                                             'height':'auto'
                                            }
     ),
@@ -259,7 +280,7 @@ def generate_table(semestre,carrera, dataframe = df, max_rows = 100):
             dataframe = dataframe[(dataframe['Programa']==carrera) & (dataframe['Grupo'] == semestre)]
         else:
             dataframe = dataframe[(dataframe['Programa']==carrera)]
-        dataframe = dataframe.drop('Unnamed: 0',axis = 1).iloc[:,loc_list]
+        dataframe = dataframe.drop('Unnamed: 0',axis = 1).iloc[:,loc_list].rename(columns={'Semestre':'Sem','Calificacion':'Cal'})
         return [ html.Thead(
                     html.Tr([html.Th(col) for col in dataframe.columns])
                 ),
@@ -267,7 +288,7 @@ def generate_table(semestre,carrera, dataframe = df, max_rows = 100):
                 html.Tbody([html.Tr([
                         html.Td(dataframe.iloc[i][col]) for col in dataframe.columns
                     ]) for i in range(min(len(dataframe), max_rows))
-                ], style = {'color':'#414242' })
+                ], style = {'color':'#414242' , 'width': 200})
 
             ]
 
@@ -276,7 +297,7 @@ def generate_2table(materia,carrera, dataframe = df, max_rows = 100):
     if materia:
         dataframe = dataframe[(dataframe['Programa']==carrera) & (dataframe['Unidad de aprendizaje']==materia)]
 
-        dataframe = dataframe.drop('Unnamed: 0',axis = 1).iloc[:,loc_list]
+        dataframe = dataframe.drop('Unnamed: 0',axis = 1).iloc[:,loc_list].rename(columns={'Semestre':'Sem','Calificacion':'Cal'})
         return [ html.Thead(
                     html.Tr([html.Th(col) for col in dataframe.columns])
                 ),
@@ -303,9 +324,9 @@ def generate_3table(materia_grupo,carrera, dataframe = df, max_rows = 100):
     
     dataframe = new_df
     try:
-        dataframe = dataframe.drop('Unnamed: 0',axis = 1).iloc[:,loc_list]
+        dataframe = dataframe.drop('Unnamed: 0',axis = 1).iloc[:,loc_list].rename(columns={'Semestre':'Sem','Calificacion':'Cal'})
     except:
-        dataframe = df[df['Unidad de aprendizaje'] == ''].drop('Unnamed: 0',axis = 1).iloc[:,loc_list]
+        dataframe = df[df['Unidad de aprendizaje'] == ''].drop('Unnamed: 0',axis = 1).iloc[:,loc_list].rename(columns={'Semestre':'Sem','Calificacion':'Cal'})
     if True:
         
     #     dataframe = dataframe[(dataframe['Programa']==carrera) & (dataframe['Unidad de aprendizaje']==materia)]
