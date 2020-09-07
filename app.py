@@ -44,7 +44,6 @@ app.layout = html.Div( children = [
             'text-align':'center'
         }
     ),
-
     html.H3(children = 'Filtrar por grupo', style = style_subtitles),
     html.Div('', style = style_bar),
     html.Div(
@@ -179,6 +178,7 @@ app.layout = html.Div( children = [
                                             'height':'auto'
                                            }
     ),
+
     html.Footer(children= [
                                          html.Div(children = ['Hecho por Julio César Hernández -  ',
                                                                 html.A('GitHub',href = 'https://github.com/JoulesCH'),
@@ -276,7 +276,7 @@ def generate_2table(materia,carrera, dataframe = df, max_rows = 100):
     if materia:
         dataframe = dataframe[(dataframe['Programa']==carrera) & (dataframe['Unidad de aprendizaje']==materia)]
 
-        dataframe = dataframe.drop('Unnamed: 0',axis = 1).iloc[:,[0,1,3,5,6,7,8,9,10,15,16]]
+        dataframe = dataframe.drop('Unnamed: 0',axis = 1).iloc[:,[0,1,3,5,6,7,8,9,10,16]]
         return [ html.Thead(
                     html.Tr([html.Th(col) for col in dataframe.columns])
                 ),
