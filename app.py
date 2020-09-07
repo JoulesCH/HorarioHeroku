@@ -21,31 +21,41 @@ colors = {
 }
 
 style_subtitles= {
-    'margin-left':30
+    'margin-left':100,
+    'margin-right':'auto',
+    'width': 300
 
 }
 style_bar = {  
     'border-top-style': 'double',
     'border-top-color': '#79003E',#'#1866B9',
-    'width': 'auto',
-    'margin-left': 30,
-    'margin-right': 20
+    'width': 900,
+    'margin-left': 'auto',
+    'margin-right': 'auto'
 }
 app.layout = html.Div( children = [
     html.Header(
         children = [html.Br(),html.H1('Información de horarios - ESFM', style={'margin-bottom':0}),html.P(children = 'Página no oficial del IPN', style = {'color':'#959595'}), html.Br()],
         style= {
-            'backgroundColor': '#79003E',#colors['text'],#colors['background'],
-            'color': '#FFFFFF',#colors['text'],
+           # 'backgroundColor': '#79003E',#colors['text'],#colors['background'],
+            'color': '#79003E',#'#FFFFFF',#colors['text'],
             'margin-top':0,
             'margin-bottom':0,
             'margin-left':'auto',
             'margin-right':'auto',
             'text-align':'center',
-            'margin-left':30
+            'margin-left':0,
+            'height':130
             #'width':730
         }
     ),
+    # html.Div(style= {
+    #         'backgroundColor': '#79003E',#colors['text'],#colors['background'],
+    #         'height':10,
+    #         'margin-left':30,
+    #         ''
+    #         }
+    # ),
     html.H3(children = 'Filtrar por grupo', style = style_subtitles),
     html.Div('', style = style_bar),
     html.Div(children = [
@@ -60,7 +70,7 @@ app.layout = html.Div( children = [
                                                     clearable = False),
             style = {
                 'margin':40,
-                'width': 250,
+                'width': 200,
                 'margin-bottom':10,
                 'margin-top': 20,
                 'margin-right':10
@@ -83,7 +93,7 @@ app.layout = html.Div( children = [
             },
             className = 'six columns'
     
-    )],className = 'row'),
+    )],className = 'row', style = {'width': 500, 'margin-left':'auto', 'margin-right':'auto'}),
 
     html.Table(id = 'First_table',style = {
                                             'textAlign': 'center',
@@ -111,7 +121,7 @@ app.layout = html.Div( children = [
                                                 clearable = False),
         style = {
             'margin':40,
-            'width': 250,
+            'width': 200,
             'margin-bottom':10,
             'margin-top': 20,
             'margin-right':10
@@ -134,7 +144,7 @@ app.layout = html.Div( children = [
         className = 'six columns'
     
     )
-    ], className = 'row'),
+    ], className = 'row', style = {'width': 800, 'margin-left':'auto', 'margin-right':'auto'}),
 
     html.Table(id = 'second_table',style = {
                                             'textAlign': 'center',
@@ -162,7 +172,7 @@ app.layout = html.Div( children = [
                                                     clearable = False),
             style = {
                 'margin':40,
-                'width': 250,
+                'width': 200,
                 'margin-bottom':10,
                 'margin-top': 20,
                 'margin-right':10
@@ -178,7 +188,7 @@ app.layout = html.Div( children = [
                                                     clearable = True),
             style = {
                 'margin':40,
-                'width': 900,
+                'width': 500,
                 'margin-top':20,
                 'margin-bottom':20,
                 'margin-left':0,
@@ -186,7 +196,7 @@ app.layout = html.Div( children = [
             className = 'two columns'
         
         )
-    ], className = 'row'),
+    ], className = 'row', style = {'width': 800, 'margin-left':'auto', 'margin-right':'auto'}),
 
     html.Table(id = 'third_table',style = {
                                             'textAlign': 'center',
