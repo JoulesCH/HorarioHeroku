@@ -15,8 +15,38 @@ group_dict = [{'label': group,'value':group} for group in df['Grupo'].unique()]
 group_dict = first + group_dict
 app.title = 'ESFM | Horario'
 
+colors = {
+    'text': '#1866B9',
+    'background': '#FFFFFF'
+}
+
+style_subtitles= {
+    'margin-left':20
+
+}
+style_bar = {  
+    'border-top-style': 'double',
+    'border-top-color': '#79003E',#'#1866B9',
+    'width': 300,
+    'margin-left': 20,
+    'margin-right': 'auto'
+}
 app.layout = html.Div( children = [
-    html.H3(children = 'Filtrar por grupo'),
+    html.Header(
+        children = [html.Br(),html.H1('Información de horarios - ESFM', style={'margin-bottom':0}),html.P(children = 'Página no oficial del IPN', style = {'color':'#959595'}), html.Br()],
+        style= {
+            'backgroundColor': '#79003E',#colors['text'],#colors['background'],
+            'color': '#FFFFFF',#colors['text'],
+            'margin-top':0,
+            'margin-bottom':0,
+            'margin-left':0,
+            'margin-right':0,
+            'text-align':'center'
+        }
+    ),
+
+    html.H3(children = 'Filtrar por grupo', style = style_subtitles),
+    html.Div('', style = style_bar),
     html.Div(
         children = dcc.Dropdown(id = 'Carrera', options = [{'label':'Ingeniería Matemática',
                                                             'value':'LIM'},
@@ -55,10 +85,12 @@ app.layout = html.Div( children = [
                                             'margin-left':'auto',
                                             'margin-right':'auto',
                                             'margin-bottom':40,
-                                            'width': 1100
+                                            'width': 'auto',
+                                            'height':'auto'
                                            }
     ),
-    html.H3(children = 'Filtrar por materia'),
+    html.H3(children = 'Filtrar por materia', style = style_subtitles),
+    html.Div('', style = style_bar),
     html.Div(
         children = dcc.Dropdown(id = 'Carrera_2', options = [{'label':'Ingeniería Matemática',
                                                             'value':'LIM'},
@@ -97,10 +129,13 @@ app.layout = html.Div( children = [
                                             'margin-left':'auto',
                                             'margin-right':'auto',
                                             'margin-bottom':40,
-                                            'width': 1100
+                                            'width': 'auto',
+                                            'height':'auto'
                                            }
     ),
-    html.H3(children = 'Organiza tu horario'),
+    
+    html.H3(children = 'Organiza tu horario', style = style_subtitles),
+    html.Div('', style = style_bar),
     html.Div(
         children = dcc.Dropdown(id = 'Carrera_3', options = [{'label':'Ingeniería Matemática',
                                                             'value':'LIM'},
@@ -140,12 +175,15 @@ app.layout = html.Div( children = [
                                             'margin-left':'auto',
                                             'margin-right':'auto',
                                             'margin-bottom':40,
-                                            'width': 1100
+                                            'width': 'auto',
+                                            'height':'auto'
                                            }
     ),
     html.Footer(children= [
-                                         html.Div(children = ['Made by Joules CH -  ',
-                                                                html.A('GitHub',href = 'https://github.com/JoulesCH') 
+                                         html.Div(children = ['Hecho por Julio César Hernández -  ',
+                                                                html.A('GitHub',href = 'https://github.com/JoulesCH'),
+                                                                ' - ',
+                                                                html.A('LinkedIn',href = 'https://www.linkedin.com/in/julio-césar-hernández-b426a1161/') ,'.' 
                                                         ], 
                                                 style = {
                                                     'textAlign': 'center',
@@ -153,12 +191,25 @@ app.layout = html.Div( children = [
                                                     'margin-left': 'auto',
                                                     'margin-right': 'auto'
                                                  }
+                                         ),
+                                         html.Div(children= ['Datos obtenidos de ', html.A('Mis Profesores',href = 'https://www.misprofesores.com/escuelas/ESFM-IPN_1691'),
+                                                                                            ' y ', 
+                                                                                            html.A('ESFM',href = 'https://www.esfm.ipn.mx/assets/files/esfm/docs/HORARIOS.pdf'),
+                                                                                            '. '],
+                                                  style = {
+                                                    'textAlign': 'center',
+                                                    'margin': 10,
+                                                    'margin-left': 'auto',
+                                                    'margin-right': 'auto'
+                                                 }
+                                         
                                          )
-                                    ],
+     
+                            ],
                                 style={
                                         'width': 777,
-                                        'border-top-style': 'double',
-                                        'border-top-color': '#1866B9',
+                                        #'border-top-style': 'double',
+                                        #'border-top-color': '#1866B9',
                                         'margin-left': 'auto',
                                         'margin-right': 'auto',
                                         'margin-top': 15
@@ -169,7 +220,7 @@ app.layout = html.Div( children = [
 
    
 
-]
+],style={'margin-top':0}
 )
 
 @app.callback(Output('Semestre','options'),[Input('Carrera','value')])
