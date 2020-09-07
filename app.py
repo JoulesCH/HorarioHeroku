@@ -7,14 +7,14 @@ import pandas as pd
 
 external_stylesheets = ['https://codepen.io/amyoshino/pen/jzXypZ.css']
 
-df  = pd.read_csv('Cleande_df.csv')
+df  = pd.read_csv('Cleande_df_correos.csv')
 app = dash.Dash(__name__, external_stylesheets = external_stylesheets)
 server = app.server
 first = [{'label': '-','value':'all'}]
 group_dict = [{'label': group,'value':group} for group in df['Grupo'].unique()]
 group_dict = first + group_dict
 app.title = 'ESFM | Horario'
-
+loc_list = [1,2,4,6,7,8,9,10,11,17,18]
 colors = {
     'text': '#1866B9',
     'background': '#FFFFFF'
@@ -259,7 +259,7 @@ def generate_table(semestre,carrera, dataframe = df, max_rows = 100):
             dataframe = dataframe[(dataframe['Programa']==carrera) & (dataframe['Grupo'] == semestre)]
         else:
             dataframe = dataframe[(dataframe['Programa']==carrera)]
-        dataframe = dataframe.drop('Unnamed: 0',axis = 1).iloc[:,[0,1,3,5,6,7,8,9,10,16]]
+        dataframe = dataframe.drop('Unnamed: 0',axis = 1).iloc[:,loc_list]
         return [ html.Thead(
                     html.Tr([html.Th(col) for col in dataframe.columns])
                 ),
@@ -276,7 +276,7 @@ def generate_2table(materia,carrera, dataframe = df, max_rows = 100):
     if materia:
         dataframe = dataframe[(dataframe['Programa']==carrera) & (dataframe['Unidad de aprendizaje']==materia)]
 
-        dataframe = dataframe.drop('Unnamed: 0',axis = 1).iloc[:,[0,1,3,5,6,7,8,9,10,16]]
+        dataframe = dataframe.drop('Unnamed: 0',axis = 1).iloc[:,loc_list]
         return [ html.Thead(
                     html.Tr([html.Th(col) for col in dataframe.columns])
                 ),
@@ -303,9 +303,9 @@ def generate_3table(materia_grupo,carrera, dataframe = df, max_rows = 100):
     
     dataframe = new_df
     try:
-        dataframe = dataframe.drop('Unnamed: 0',axis = 1).iloc[:,[0,1,3,5,6,7,8,9,10,16]]
+        dataframe = dataframe.drop('Unnamed: 0',axis = 1).iloc[:,loc_list]
     except:
-        dataframe = df[df['Unidad de aprendizaje'] == ''].drop('Unnamed: 0',axis = 1).iloc[:,[0,1,3,5,6,7,8,9,10,16]]
+        dataframe = df[df['Unidad de aprendizaje'] == ''].drop('Unnamed: 0',axis = 1).iloc[:,loc_list]
     if True:
         
     #     dataframe = dataframe[(dataframe['Programa']==carrera) & (dataframe['Unidad de aprendizaje']==materia)]
