@@ -212,9 +212,9 @@ app.layout = html.Div( children = [
 
     html.Footer(children= [
                                          html.Div(children = ['Hecho por Julio César Hernández -  ',
-                                                                html.A('GitHub',href = 'https://github.com/JoulesCH'),
+                                                                html.A('GitHub',href = 'https://github.com/JoulesCH',target='_blank'),
                                                                 ' - ',
-                                                                html.A('LinkedIn',href = 'https://www.linkedin.com/in/julio-césar-hernández-b426a1161/') ,'.' 
+                                                                html.A('LinkedIn',href = 'https://www.linkedin.com/in/julio-césar-hernández-b426a1161/',target='_blank') ,'.' 
                                                         ], 
                                                 style = {
                                                     'textAlign': 'center',
