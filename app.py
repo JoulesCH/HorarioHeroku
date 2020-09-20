@@ -223,9 +223,9 @@ app.layout = html.Div( children = [
                                                     'margin-right': 'auto'
                                                  }
                                          ),
-                                         html.Div(children= ['Datos obtenidos de ', html.A('Mis Profesores',href = 'https://www.misprofesores.com/escuelas/ESFM-IPN_1691'),
+                                         html.Div(children= ['Datos obtenidos de ', html.A('Mis Profesores',href = 'https://www.misprofesores.com/escuelas/ESFM-IPN_1691',target='_blank'),
                                                                                             ' y ', 
-                                                                                            html.A('ESFM',href = 'https://www.esfm.ipn.mx/assets/files/esfm/docs/HORARIOS.pdf'),
+                                                                                            html.A('ESFM',href = 'https://www.esfm.ipn.mx/assets/files/esfm/docs/HORARIOS.pdf',target='_blank'),
                                                                                             '. '],
                                                   style = {
                                                     'textAlign': 'center',
